@@ -19,6 +19,13 @@ class dev-packages {
         require => Exec['apt-get update'],
     }
 
+    #TODO: This process
+    #sudo apt-get update
+    #sudo apt-get install -y python-software-properties
+    #sudo add-apt-repository ppa:chris-lea/node.js
+    #sudo apt-get update
+    #sudo apt-get install nodejs
+
     exec { 'install less using npm':
         command => 'npm install less -g',
         require => Package["npm"],
@@ -212,6 +219,5 @@ include dev-packages
 include nginx-setup
 include php-setup
 include composer
-include phpqatools
 include memcached
 include redis
