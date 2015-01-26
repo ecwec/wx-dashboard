@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Ecwec\UserBundle\Entity;
+namespace Ecwec\Bundle\UserBundle\Entity;
 
 use FOS\UserBundle\Model\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
@@ -18,6 +18,11 @@ class User extends BaseUser
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     protected $id;
+
+    /**
+     * @ORM\Column(type="string", length=10, nullable=true)
+     */
+    protected $call_sign;
 
     public function __construct()
     {
