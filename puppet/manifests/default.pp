@@ -1,5 +1,11 @@
 Exec { path => [ "/bin/", "/sbin/" , "/usr/bin/", "/usr/sbin/" ] }
 
+class prepare {
+  apt::ppa { 'ppa:chris-lea/node.js': }
+}
+include prepare
+
+package {'nodejs': ensure => present, require => Class['prepare'],}
 
 class system-update {
 
@@ -13,22 +19,15 @@ class dev-packages {
     include gcc
     include wget
 
-    $devPackages = [ "vim", "curl", "git", "nodejs", "npm", "capistrano", "rubygems", "openjdk-7-jdk", "libaugeas-ruby" ]
+    $devPackages = [ "vim", "curl", "git", "npm", "capistrano", "rubygems", "openjdk-7-jdk", "libaugeas-ruby" ]
     package { $devPackages:
         ensure => "installed",
         require => Exec['apt-get update'],
     }
 
-    #TODO: This process
-    #sudo apt-get update
-    #sudo apt-get install -y python-software-properties
-    #sudo add-apt-repository ppa:chris-lea/node.js
-    #sudo apt-get update
-    #sudo apt-get install nodejs
-
     exec { 'install less using npm':
         command => 'npm install less -g',
-        require => Package["npm"],
+        require => Package["nodejs"],
     }
 
     exec { 'install capifony using RubyGems':
