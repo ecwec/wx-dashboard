@@ -1,1 +1,21 @@
 {% extends 'CoreBundle::layout.html.twig' %}
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Station</th>
+            <th>Temperature</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for station in stations %}
+        <tr>
+            <td>{{ station.name }}</td>
+            <td>{{ station.temp }}°F</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
