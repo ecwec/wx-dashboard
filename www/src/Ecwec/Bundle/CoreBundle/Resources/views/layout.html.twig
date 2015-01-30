@@ -34,7 +34,10 @@
     </div>
 </nav>
 <div class="container">
-    <h1>Hello, world!</h1>
+    <h1>{% block title %}Hello, World!{% endblock %}</h1>
+    {% block content %}
+
+    {% endblock %}
 </div><!-- /.container -->
 
 <!-- jQuery (necessary for Bootstraps JavaScript plugins) -->
