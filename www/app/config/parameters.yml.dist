@@ -2,10 +2,10 @@
 parameters:
     database_driver:   pdo_mysql
     database_host:     127.0.0.1
-    database_port:     ~
+    database_port:     3306
     database_name:     symfony
-    database_user:     root
-    database_password: ~
+    database_user:     symfony
+    database_password: symfony-vagrant
     # You should uncomment this if you want use pdo_sqlite
     # database_path: "%kernel.root_dir%/data.db3"
 
@@ -18,3 +18,6 @@ parameters:
 
     # A secret key that's used to generate certain security-related tokens
     secret:            ThisTokenIsNotSoSecretChangeIt
+
+    # Api key for aprs.fi.  Sign up for an account there to get a key.
+    aprs_fi_api_key: ReplaceThisWIthYourKey

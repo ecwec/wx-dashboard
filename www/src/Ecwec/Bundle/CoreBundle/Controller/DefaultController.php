@@ -3,6 +3,8 @@
 namespace Ecwec\Bundle\CoreBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Ecwec\Bundle\WeatherDataProviderBundle\Entity\Station;
+use GuzzleHttp\Client;
 
 class DefaultController extends Controller
 {
@@ -10,13 +12,30 @@ class DefaultController extends Controller
     {
         ini_set( "user_agent", "WX Dashboard (+https://github.com/ecwec/wx-dashboard)" );
 
-        //@TODO make this a secure parameter
-        $api_key = '';
+        $api_key = $this->container->getParameter('aprs_fi_api_key');
 
-        $json_url = "http://api.aprs.fi/api/get?name=AJ4NR,EW3427&what=wx&apikey={$api_key}&format=json";
-        $json = file_get_contents( $json_url, 0, null, null );
-        $json_output = json_decode( $json, true);
-        $stations_array = $json_output[ 'entries' ];
+        $tracked_stations = $this->getDoctrine()
+            ->getRepository('WeatherDataProviderBundle:Station')
+            ->findAll();
+
+        $station_string_array = [];
+        foreach ($tracked_stations as $station) {
+            /** @var Station $station */
+            $station_string_array[] = $station->getObjectId();
+        }
+
+        $get_stations = implode(',', $station_string_array);
+
+        $json_url = "http://api.aprs.fi/api/get?name={$get_stations}&what=wx&apikey={$api_key}&format=json";
+
+        $client = new Client();
+
+        try {
+            $json_output = $client->get($json_url)->json();
+            $stations_array = $json_output[ 'entries' ];
+        } catch (RequestException $e) {
+            $stations_array = [];
+        }
 
         $stations = [];
 

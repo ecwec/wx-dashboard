@@ -35,7 +35,9 @@
         "braincrafted/bootstrap-bundle": "dev-master",
         "twbs/bootstrap": "3.0.*",
         "jquery/jquery":  "1.10.*",
-        "knplabs/knp-menu-bundle": "~2.0"
+        "knplabs/knp-menu-bundle": "~2.0",
+        "doctrine/doctrine-fixtures-bundle": "2.2.*",
+        "guzzlehttp/guzzle": "~5.2"
     },
     "require-dev": {
         "sensio/generator-bundle": "~2.3"

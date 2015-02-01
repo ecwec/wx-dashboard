@@ -1,3 +1,7 @@
+weather_data_provider:
+    resource: "@WeatherDataProviderBundle/Resources/config/routing.yml"
+    prefix:   /
+
 core:
     resource: "@CoreBundle/Resources/config/routing.yml"
     prefix:   /
