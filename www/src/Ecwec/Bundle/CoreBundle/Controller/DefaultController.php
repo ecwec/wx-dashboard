@@ -11,8 +11,7 @@ class DefaultController extends Controller
     {
         ini_set( "user_agent", "WX Dashboard (+https://github.com/ecwec/wx-dashboard)" );
 
-        //@TODO make this a secure parameter
-        $api_key = '';
+        $api_key = $this->container->getParameter('aprs_fi_api_key');
 
         $tracked_stations = $this->getDoctrine()
             ->getRepository('WeatherDataProviderBundle:Station')
