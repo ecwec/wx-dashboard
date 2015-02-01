@@ -1,3 +1,1 @@
-weather_data_provider_homepage:
-    path:     /hello/{name}
-    defaults: { _controller: WeatherDataProviderBundle:Default:index }
+
