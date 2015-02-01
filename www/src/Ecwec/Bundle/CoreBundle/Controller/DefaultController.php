@@ -34,10 +34,6 @@ class DefaultController extends Controller
             $json_output = $client->get($json_url)->json();
             $stations_array = $json_output[ 'entries' ];
         } catch (RequestException $e) {
-            echo $e->getRequest() . "\n";
-            if ($e->hasResponse()) {
-                echo $e->getResponse() . "\n";
-            }
             $stations_array = [];
         }
 
