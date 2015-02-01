@@ -1,1 +1,5 @@
+weather_data_provider_station:
+    resource: "@WeatherDataProviderBundle/Resources/config/routing/station.yml"
+    prefix:   /station
+
 

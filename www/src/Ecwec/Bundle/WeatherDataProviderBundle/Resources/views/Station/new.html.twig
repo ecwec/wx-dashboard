@@ -1,0 +1,10 @@
+{% extends 'CoreBundle::layout.html.twig' %}
+
+{% block title %}New Station{% endblock %}
+
+{% block content -%}
+
+    {{ form(form) }}
+
+    <a class="btn btn-sml btn-info" href="{{ path('station') }}">Back to the list</a>
+{% endblock %}

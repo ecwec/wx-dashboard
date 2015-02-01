@@ -13,9 +13,7 @@ class Builder extends ContainerAware
         $menu = $factory->createItem('root');
 
         $menu->addChild('Home', array('route' => 'core_homepage'));
-        $menu->addChild('Stations', array('route' => 'core_homepage'));
-
-        $menu['Stations']->addChild('Add Station', array('url' => '#'));
+        $menu->addChild('Stations', array('route' => 'station'));
 
         // access services from the container!
         $em = $this->container->get('doctrine')->getManager();
