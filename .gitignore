@@ -36,3 +36,4 @@ w////phpunit.xml
 .idea
 .vagrant
 .DS_Store
+/www/npm-debug.log
