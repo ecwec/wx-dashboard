@@ -3,6 +3,7 @@
 namespace Ecwec\Bundle\CoreBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Ecwec\Bundle\WeatherDataProviderBundle\Entity\Station;
 
 class DefaultController extends Controller
 {
@@ -13,7 +14,19 @@ class DefaultController extends Controller
         //@TODO make this a secure parameter
         $api_key = '';
 
-        $json_url = "http://api.aprs.fi/api/get?name=AJ4NR,EW3427&what=wx&apikey={$api_key}&format=json";
+        $tracked_stations = $this->getDoctrine()
+            ->getRepository('WeatherDataProviderBundle:Station')
+            ->findAll();
+
+        $station_string_array = [];
+        foreach ($tracked_stations as $station) {
+            /** @var Station $station */
+            $station_string_array[] = $station->getObjectId();
+        }
+
+        $get_stations = implode(',', $station_string_array);
+
+        $json_url = "http://api.aprs.fi/api/get?name={$get_stations}&what=wx&apikey={$api_key}&format=json";
         $json = file_get_contents( $json_url, 0, null, null );
         $json_output = json_decode( $json, true);
         $stations_array = $json_output[ 'entries' ];
