@@ -1,0 +1,21 @@
+Ecwec\Bundle\WeatherDataProviderBundle\Entity\Station:
+    type: entity
+    table: null
+    repositoryClass: Ecwec\Bundle\WeatherDataProviderBundle\Entity\StationRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        objectId:
+            type: string
+            length: 255
+            column: object_id
+        name:
+            type: string
+            length: 255
+        description:
+            type: text
+    lifecycleCallbacks: {  }
