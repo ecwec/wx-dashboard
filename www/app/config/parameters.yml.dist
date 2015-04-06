@@ -21,3 +21,6 @@ parameters:
 
     # Api key for aprs.fi.  Sign up for an account there to get a key.
     aprs_fi_api_key: ReplaceThisWIthYourKey
+
+    # Api key for Google Maps
+    google_maps_api_key: ReplaceThisWithYourKey
