@@ -1,0 +1,30 @@
+station:
+    path:     /
+    defaults: { _controller: "WeatherDataProviderBundle:Station:index" }
+
+station_show:
+    path:     /{id}/show
+    defaults: { _controller: "WeatherDataProviderBundle:Station:show" }
+
+station_new:
+    path:     /new
+    defaults: { _controller: "WeatherDataProviderBundle:Station:new" }
+
+station_create:
+    path:     /create
+    defaults: { _controller: "WeatherDataProviderBundle:Station:create" }
+    requirements: { _method: post }
+
+station_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "WeatherDataProviderBundle:Station:edit" }
+
+station_update:
+    path:     /{id}/update
+    defaults: { _controller: "WeatherDataProviderBundle:Station:update" }
+    requirements: { _method: post|put }
+
+station_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "WeatherDataProviderBundle:Station:delete" }
+    requirements: { _method: post|delete }
