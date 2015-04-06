@@ -18,6 +18,8 @@ class StationType extends AbstractType
             ->add('objectId')
             ->add('name')
             ->add('description')
+            ->add('latitude')
+            ->add('longitude')
         ;
     }
     

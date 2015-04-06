@@ -18,12 +18,16 @@ class LoadStationData implements FixtureInterface
         $station->setObjectId('AJ4NR');
         $station->setName('AJ4NR');
         $station->setDescription('AJ4NR');
+        $station->setLatitude(44.16200);
+        $station->setLongitude(-88.55917);
         $manager->persist($station);
 
         $station = new Station();
         $station->setObjectId('EW3427');
         $station->setName('EW3427');
         $station->setDescription('EW3427');
+        $station->setLatitude(44.03400);
+        $station->setLongitude(-88.75383);
         $manager->persist($station);
 
         $manager->flush();

@@ -14,6 +14,9 @@
     <!-- HTML5 Shim and Respond.js add IE8 support of HTML5 elements and media queries -->
     {% include 'BraincraftedBootstrapBundle::ie8-support.html.twig' %}
 
+    {% block topjs %}
+    {% endblock %}
+
 </head>
 
 <body>
@@ -44,5 +47,7 @@
 <script src="{{ asset('js/jquery.js') }}"></script>
 <!-- Include all JavaScripts, compiled by Assetic -->
 <script src="{{ asset('js/bootstrap.js') }}"></script>
+{% block bottomjs %}
+{% endblock %}
 </body>
 </html>

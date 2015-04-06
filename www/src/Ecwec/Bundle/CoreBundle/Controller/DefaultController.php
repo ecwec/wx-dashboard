@@ -46,7 +46,6 @@ class DefaultController extends Controller
                 'name' => $station['name'],
                 'temp' => $temp
             ];
-            ///var_dump($station['temp']);
         }
 
         return $this->render('CoreBundle::index.html.twig', array('stations' => $stations));
