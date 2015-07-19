@@ -15,15 +15,27 @@ class LoadStationData implements FixtureInterface
     public function load(ObjectManager $manager)
     {
         $station = new Station();
-        $station->setObjectId('AJ4NR');
-        $station->setName('AJ4NR');
-        $station->setDescription('AJ4NR');
+        $station->setObjectId('WIWIWXOMR');
+        $station->setName('WIWIWXOMR');
+        $station->setDescription('WIWIWXOMR');
+        $station->setLatitude(44.045);
+        $station->setLongitude(-88.704);
         $manager->persist($station);
 
         $station = new Station();
-        $station->setObjectId('EW3427');
-        $station->setName('EW3427');
-        $station->setDescription('EW3427');
+        $station->setObjectId('WIWIWXERK');
+        $station->setName('WIWIWXERK');
+        $station->setDescription('WIWIWXERK');
+        $station->setLatitude(44.004);
+        $station->setLongitude(-88.842);
+        $manager->persist($station);
+
+        $station = new Station();
+        $station->setObjectId('WIWIWXWLF');
+        $station->setName('WIWIWXWLF');
+        $station->setDescription('WIWIWXWLF');
+        $station->setLatitude(44.213);
+        $station->setLongitude(-88.846);
         $manager->persist($station);
 
         $manager->flush();

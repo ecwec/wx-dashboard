@@ -18,4 +18,10 @@ Ecwec\Bundle\WeatherDataProviderBundle\Entity\Station:
             length: 255
         description:
             type: text
+        latitude:
+            type: float
+            length: 255
+        longitude:
+            type: float
+            length: 255
     lifecycleCallbacks: {  }

@@ -2,6 +2,10 @@ station:
     path:     /
     defaults: { _controller: "WeatherDataProviderBundle:Station:index" }
 
+station_map:
+    path:     /map
+    defaults: { _controller: "WeatherDataProviderBundle:Station:map" }
+
 station_show:
     path:     /{id}/show
     defaults: { _controller: "WeatherDataProviderBundle:Station:show" }
