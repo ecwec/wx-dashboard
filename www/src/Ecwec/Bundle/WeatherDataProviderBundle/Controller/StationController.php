@@ -29,6 +29,21 @@ class StationController extends Controller
             'entities' => $entities,
         ));
     }
+
+    /**
+     * List all Stations on a map.
+     */
+    public function mapAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $entities = $em->getRepository('WeatherDataProviderBundle:Station')->findAll();
+
+        return $this->render('WeatherDataProviderBundle:Station:map.html.twig', array(
+            'entities' => $entities,
+        ));
+    }
+
     /**
      * Creates a new Station entity.
      *

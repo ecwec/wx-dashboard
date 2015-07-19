@@ -1,5 +1,5 @@
 {% extends 'CoreBundle::layout.html.twig' %}
-
+{% set firstStation = entities|first %}
 {% block topjs %}
     <style type="text/css">
         #map-canvas { height: 400px; width: 400px; margin: 10px 0; padding: 0;}
@@ -11,55 +11,34 @@
     <script type="text/javascript">
         function initialize() {
             var mapOptions = {
-                center: { lat: {{ entity.latitude }}, lng: {{entity.longitude }}},
-                zoom: 14
+                center: { lat: {{ firstStation.latitude }}, lng: {{firstStation.longitude }}},
+                zoom: 10
             };
             var map = new google.maps.Map(document.getElementById('map-canvas'),
                     mapOptions);
 
+            {% for entity in entities %}
             var marker = new google.maps.Marker({
                 position: { lat: {{ entity.latitude }}, lng: {{entity.longitude }}},
                 map: map,
-                title:"{{ entity.objectId }}"
+                title:"{{ entity.objectId }}",
+                url: "{{ path('station_show', {'id' : entity.id}) }}"
             });
+            google.maps.event.addListener(marker, 'click', function() {
+                window.location.href = this.url;
+            });
+            {% endfor %}
+
+
         }
         google.maps.event.addDomListener(window, 'load', initialize);
     </script>
 {% endblock %}
 
-{% block title %}Station{% endblock %}
-
+{% block title %}Stations{% endblock %}
 {% block content -%}
-    <table class="record_properties table table-striped">
-        <tbody>
-            <tr>
-                <th>ID</th>
-                <td>{{ entity.id }}</td>
-            </tr>
-            <tr>
-                <th>Object ID</th>
-                <td>{{ entity.objectId }}</td>
-            </tr>
-            <tr>
-                <th>Name</th>
-                <td>{{ entity.name }}</td>
-            </tr>
-            <tr>
-                <th>Description</th>
-                <td>{{ entity.description }}</td>
-            </tr>
-            <tr>
-                <th>Coordinates</th>
-                <td>{{ entity.latitude }}, {{ entity.longitude }}</td>
-            </tr>
-        </tbody>
-    </table>
-
+    <a class="btn btn-primary" href="{{ path('station_new') }}">New</a>
     <div id="map-canvas"></div>
-
-    <a class="btn btn-sml btn-info" href="{{ path('station') }}">Back to the list</a><br/><br/>
-
-    {{ form(delete_form) }}
 {% endblock %}
 
 {% block bottomjs %}
