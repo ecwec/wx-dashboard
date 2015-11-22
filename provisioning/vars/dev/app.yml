@@ -1,0 +1,9 @@
+---
+  app_domain: wx-dashboard.local
+  app_repository: git@github.com:ecwec/wx-dashboard.git
+  app_env: dev
+  app_environment: development
+  app_db_username: root
+  app_db_password: root
+  app_databases:
+    - app

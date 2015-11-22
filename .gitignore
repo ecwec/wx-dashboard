@@ -33,7 +33,4 @@ w////phpunit.xml
 # Composer PHAR
 /composer.phar
 
-.idea
-.vagrant
-.DS_Store
 /www/npm-debug.log
